@@ -9,12 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your HTML code here
-              <html>
-                <head><title></title></head>
-                <body>
-                <b>Taranvir Kaur</b>
-                </body>
-               </html>
+             
             }
         }
         stage('Test') {
