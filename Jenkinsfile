@@ -1,26 +1,33 @@
 pipeline {
-    agent {
-        docker {
-            image 'docker'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
     stages {
+        stage('Install Docker') {
+            steps {
+                sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
+                sh 'sh get-docker.sh'
+                sh 'sudo usermod -aG docker jenkins'
+            }
+        }
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
             }
         }
-        stage('Build image') {
+        stage('Build') {
             steps {
-                sh 'docker build -t myapp .'
+                sh 'docker --version'
+                echo "Build"
             }
         }
-        stage('Run container') {
+        stage('Test') {
             steps {
-                sh 'docker run -p 80:80 -d myapp'
+                echo "Test"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Deploy"
             }
         }
     }
 }
-
