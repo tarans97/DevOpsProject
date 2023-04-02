@@ -13,11 +13,14 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
                 sh 'echo "Building..."'
-                sh 'chmod 777 hello.sh'
-                sh './hello.sh'
+                sh './mvnw clean install site surefire-report:report'
+                sh 'tree'
+                //sh 'chmod 777 hello.sh'
+                //sh './hello.sh'
                 
             }
         }
+        
 
         stage('Test') {
             steps {
@@ -32,6 +35,11 @@ pipeline {
                 sh 'echo "Deploying..."'
             }
         }
+        post {
+    success {
+      publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'groupone.html', reportName: 'GroupOne Project Report', reportTitles: '', useWrapperFileDirectly: true])
+    }
+  }
 
        
     }
