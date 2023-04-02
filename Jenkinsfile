@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build') {
            steps {
-                git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
+              //  git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
                 sh '/tmp/DevOpsProject/hello.sh'
                 echo "Build"
             }
