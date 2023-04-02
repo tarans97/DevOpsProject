@@ -32,7 +32,7 @@ pipeline {
                     def dockerInstalled = sh(script: 'which docker', returnStatus: true) == 0
 
                     if (!dockerInstalled) {
-                        sh 'sudo curl -fsSL https://get.docker.com -o get-docker.sh'
+                        sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
                         sh 'sh sudo get-docker.sh'
                         sh 'sudo usermod -aG docker taranvir'
                     } else {
