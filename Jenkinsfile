@@ -32,8 +32,8 @@ pipeline {
                     def dockerInstalled = sh(script: 'which docker', returnStatus: true) == 0
 
                     if (!dockerInstalled) {
-                        sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
-                        sh 'sh get-docker.sh'
+                        sh 'sudo curl -fsSL https://get.docker.com -o get-docker.sh'
+                        sh 'sh sudo get-docker.sh'
                         sh 'sudo usermod -aG docker taranvir'
                     } else {
                         echo 'Docker is already installed.'
