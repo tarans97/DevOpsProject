@@ -7,9 +7,9 @@ pipeline {
             }
         }
         stage('Build') {
-            steps {
+           steps {
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
-              //  sh 'your build command here'
+                sh hello.sh
                 echo "Build"
             }
         }
