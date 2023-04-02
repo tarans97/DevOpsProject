@@ -13,7 +13,9 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
                 sh 'echo "Building..."'
+                sh 'chmod 777 hello.sh'
                 sh './hello.sh'
+                
             }
         }
 
