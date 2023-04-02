@@ -1,28 +1,22 @@
 pipeline {
-           agent {
-        docker {
-            image 'jenkins/jenkins:lts'
-            args '-u root'
-        } 
-           
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
+            }
         }
-           stages {
-                      stage('Install Docker') {
-    steps {
-        sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
-        sh 'sh get-docker.sh'
-    }
-}
         stage('Build') {
-           steps {
-             git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
-              //   sh './hello.sh'
-                      sh 'docker --version'
-                   echo "Build"
+            steps {
+                git 'https://github.com/tarans97/DevOpsProject.git'
+                git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
+              //  sh 'your build command here'
+                echo "Build"
             }
         }
         stage('Test') {
             steps {
+                git 'https://github.com/tarans97/DevOpsProject.git'
               git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
                // sh 'your test command here'
                 echo "Test"
@@ -30,6 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                git 'https://github.com/tarans97/DevOpsProject.git'
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
                // sh 'your deploy command here'
                 echo "Deploy"
