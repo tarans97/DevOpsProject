@@ -1,10 +1,10 @@
 pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
-            }
+           agent {
+        docker {
+            image 'jenkins/jenkins:lts'
+            args '-u root'
+        } 
+           
         }
         stage('Build') {
            steps {
