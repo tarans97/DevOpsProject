@@ -8,18 +8,20 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Build your HTML code here
-             
+                git 'https://github.com/tarans97/DevOpsProject.git'
+              //  sh 'your build command here'
             }
         }
         stage('Test') {
             steps {
-                // Test your HTML code here
+                git 'https://github.com/tarans97/DevOpsProject.git'
+               // sh 'your test command here'
             }
         }
         stage('Deploy') {
             steps {
-                // Deploy your HTML code here
+                git 'https://github.com/tarans97/DevOpsProject.git'
+               // sh 'your deploy command here'
             }
         }
     }
