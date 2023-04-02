@@ -8,9 +8,10 @@ pipeline {
         }
         stage('Build') {
            steps {
-              //  git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
-                sh '/tmp/DevOpsProject/hello.sh'
-                echo "Build"
+             git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
+        sh 'ls -l /tmp/DevOpsProject'
+        sh '/tmp/DevOpsProject/hello.sh'
+        echo "Build"
             }
         }
         stage('Test') {
