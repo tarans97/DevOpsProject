@@ -1,41 +1,26 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'docker'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     stages {
-        
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
             }
         }
-        stage('Install Docker') {
-    steps {
-        sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
-        sh 'sh get-docker.sh'
-    }
-        stage('Build') {
+        stage('Build image') {
             steps {
-                
-                git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
-              //  sh 'your build command here'
-                sh 'docker --version'
-                echo "Build"
+                sh 'docker build -t myapp .'
             }
         }
-        stage('Test') {
+        stage('Run container') {
             steps {
-              
-              git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
-               // sh 'your test command here'
-                echo "Test"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                
-                git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
-               // sh 'your deploy command here'
-                echo "Deploy"
+                sh 'docker run -p 80:80 -d myapp'
             }
         }
     }
 }
+
