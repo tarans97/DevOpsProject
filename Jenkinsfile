@@ -13,7 +13,7 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
                 sh 'npm install'
-                sh 'npm run build'
+              //  sh 'npm run build'
               
                 
             }
