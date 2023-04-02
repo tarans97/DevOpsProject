@@ -12,9 +12,18 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
-                sh 'echo "Building..."'
-                sh 'chmod 777 groupone.html'
-                sh './groupone.html'
+                sh 'npm install'
+                sh 'npm run build'
+              
+                
+            }
+        }
+         stage('Publish') {
+            steps {
+                git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'dist', reportFiles: 'groupone.html', reportName: 'GroupOne Project Report'])
+
+              
                 
             }
         }
