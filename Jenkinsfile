@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                git 'https://github.com/tarans97/DevOpsProject.git'
+                
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
               //  sh 'your build command here'
                 echo "Build"
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                git 'https://github.com/tarans97/DevOpsProject.git'
+              
               git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
                // sh 'your test command here'
                 echo "Test"
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                git 'https://github.com/tarans97/DevOpsProject.git'
+                
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
                // sh 'your deploy command here'
                 echo "Deploy"
