@@ -6,6 +6,7 @@ pipeline {
         } 
            
         }
+           stages {
         stage('Build') {
            steps {
              git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
