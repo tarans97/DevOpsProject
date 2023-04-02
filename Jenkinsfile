@@ -11,6 +11,7 @@ pipeline {
                 
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'
               //  sh 'your build command here'
+                sh 'docker --version'
                 echo "Build"
             }
         }
