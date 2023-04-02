@@ -35,12 +35,20 @@ pipeline {
                 sh 'echo "Deploying..."'
             }
         }
-        post {
-    success {
-      publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'groupone.html', reportName: 'GroupOne Project Report', reportTitles: '', useWrapperFileDirectly: true])
     }
-  }
-
-       
+    
+    post {
+        success {
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: false,
+                reportDir: '',
+                reportFiles: 'groupone.html',
+                reportName: 'GroupOne Project Report',
+                reportTitles: '',
+                useWrapperFileDirectly: true
+            ])
+        }
     }
 }
