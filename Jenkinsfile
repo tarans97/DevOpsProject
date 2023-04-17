@@ -17,6 +17,7 @@ pipeline {
                // sh 'tree'
                 //sh 'chmod 777 hello.sh'
                 //sh './hello.sh'
+                //Testing
                 
             }
         }
