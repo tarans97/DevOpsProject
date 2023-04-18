@@ -2,21 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('install dependecies'){
-            steps {
-                git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git' 
-                echo 'Installing Dependencies'
-                bat 'npm install'
-            }
-            post{
-            success {
-                echo 'Dependcy installation successful'
-            }
-            failure {
-                mail bcc: '', body: 'Stage: "Installing dependecies" failed!', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'jenkinstest14@gmail.com'
-            }
-            }
-        }
+        
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/tarans97/DevOpsProject.git'  
