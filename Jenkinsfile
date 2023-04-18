@@ -21,9 +21,9 @@ pipeline {
                 //Testing
                  
                 
-                    docker.build("my-nginx-image")
-                    docker.withRegistry('https://registry.example.com', 'docker-credentials') {
-                        docker.image("my-nginx-image").push()
+                   // docker.build("my-nginx-image")
+                   // docker.withRegistry('https://registry.example.com', 'docker-credentials') {
+                     //   docker.image("my-nginx-image").push()
                     
                 
                 
@@ -37,7 +37,7 @@ pipeline {
                 sh 'echo "Testing..."'
                 
                 
-                    docker.run("my-nginx-container", "--name my-nginx-container -p 80:80 -d my-nginx-image")
+                    //docker.run("my-nginx-container", "--name my-nginx-container -p 80:80 -d my-nginx-image")
                 
             
         }
